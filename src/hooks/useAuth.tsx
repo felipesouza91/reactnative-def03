@@ -51,7 +51,6 @@ function AuthProvider({ children }: AuthProviderData) {
   const CLIENT_ID = 'lxqo8p0p2ww5qlek4chddtbpnju4jh';
 
   async function signIn() {
-    console.log('Hook sigin');
     try {
       setIsLoggingIn(true);
 
@@ -67,7 +66,7 @@ function AuthProvider({ children }: AuthProviderData) {
       const response = await startAsync({
         authUrl,
       });
-      console.log(response);
+
       if (
         response.type === 'success' &&
         response.params.error !== 'access_denied'
@@ -78,7 +77,9 @@ function AuthProvider({ children }: AuthProviderData) {
         const { access_token } = response.params;
         api.defaults.headers.authorization = `Bearer ${access_token}`;
         const { data } = await api.get('/users');
-        setUser(data);
+
+        const { id, display_name, email, profile_image_url } = data.data[0];
+        setUser({ id, display_name, email, profile_image_url });
         setUserToken(access_token);
       }
     } catch (error) {

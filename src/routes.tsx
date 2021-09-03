@@ -11,7 +11,7 @@ import { Home } from '../src/screens/Home';
 export function Routes() {
   const theme = useTheme();
   const { user } = useAuth();
-  console.log(user);
+
   return (
     <View style={{ backgroundColor: theme.colors.black, flex: 1 }}>
       <AnimatePresence exitBeforeEnter>

@@ -32,7 +32,6 @@ export function SignIn() {
       Alert.alert('Erro SignIn', 'Ocorreu um erro ao tentar logar no app!');
     }
   }
-  console.log(isLoggingIn);
   return (
     <Container
       from={{
@@ -65,13 +64,13 @@ export function SignIn() {
           </Description>
 
           <SignInButton onPress={handleSignIn}>
-            {isLoggingIn ? (
-              <ActivityIndicator />
-            ) : (
-              <SignInButtonIcon>
+            <SignInButtonIcon>
+              {isLoggingIn ? (
+                <ActivityIndicator size={12} color="#FFF" />
+              ) : (
                 <Fontisto name="twitch" />
-              </SignInButtonIcon>
-            )}
+              )}
+            </SignInButtonIcon>
             <SignInButtonText>
               {isLoggingIn ? 'Entrando...' : 'Entrar com Twitch'}
             </SignInButtonText>
