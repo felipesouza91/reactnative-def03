@@ -11,12 +11,12 @@ import { Home } from '../src/screens/Home';
 export function Routes() {
   const theme = useTheme();
   const { user } = useAuth();
-
+  console.log(user);
   return (
     <View style={{ backgroundColor: theme.colors.black, flex: 1 }}>
       <AnimatePresence exitBeforeEnter>
-        { user.id ? <Home key="home" /> : <SignIn key="signIn" /> }
+        {user.id ? <Home key="home" /> : <SignIn key="signIn" />}
       </AnimatePresence>
     </View>
-  )
+  );
 }
